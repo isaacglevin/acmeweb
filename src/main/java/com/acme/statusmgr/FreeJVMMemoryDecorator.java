@@ -1,7 +1,13 @@
 package com.acme.statusmgr;
 
 public class FreeJVMMemoryDecorator implements StatusResponse {
+
     private final StatusResponse wrapped;
+    private static SystemStatusFacade facade = new RealSystemStatusFacade();
+
+    public static void setFacade(SystemStatusFacade f) {
+        facade = f;
+    }
 
     public FreeJVMMemoryDecorator(StatusResponse wrapped) {
         this.wrapped = wrapped;
@@ -9,7 +15,7 @@ public class FreeJVMMemoryDecorator implements StatusResponse {
 
     @Override
     public String getStatusDesc() {
-        return wrapped.getStatusDesc() + ", and there are " + Runtime.getRuntime().freeMemory() + " bytes of JVM memory free";
+        return wrapped.getStatusDesc() + ", and there are " + facade.getFreeJVMMemory() + " bytes of JVM memory free";
     }
 
     @Override
