@@ -44,7 +44,12 @@ public class StatusControllerDetailedTest {
      */
     @BeforeAll
     public static void beforeAll() {
-       //todo StatusController.setSystemInfoFacade(null /* todo: Inject appropriate object */);
+        SystemStatusFacade mock = new MockSystemStatusFacade();
+        AvailableProcessorsDecorator.setFacade(mock);
+        FreeJVMMemoryDecorator.setFacade(mock);
+        TotalJVMMemoryDecorator.setFacade(mock);
+        JreVersionDecorator.setFacade(mock);
+        TempLocationDecorator.setFacade(mock);
     }
 
 
