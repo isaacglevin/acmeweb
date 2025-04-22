@@ -59,3 +59,22 @@ If the server has started properly you should see a number of logging statements
 
 You can then make requests via a browser or curl following the above URL syntax.
 
+Decorator and Facade Patterns for Server Status
+This project adds support for detailed server status using the Decorator and Facade design patterns. Each system status detail (like JVM memory or JRE version) is handled by a separate decorator that appends information to a base response.
+
+A central SystemStatusFacade interface provides access to system data. A mock version is used in tests to ensure predictable outputs, while the real implementation accesses Runtime and environment data.
+
+Key Features
+Supports any order and repetition of status details
+
+Dynamically computes status descriptions and request cost
+
+Uses mock values in tests for consistent results
+
+Returns clear error messages for invalid detail inputs
+
+Example:
+
+GET /server/status/detailed?name=Yankel&details=availableProcessors,jreVersion
+Returns a response including the processor count and JRE version, with the correct request cost and status message.
+

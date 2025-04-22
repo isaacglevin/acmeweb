@@ -44,7 +44,12 @@ public class StatusControllerDetailedTest {
      */
     @BeforeAll
     public static void beforeAll() {
-       //todo StatusController.setSystemInfoFacade(null /* todo: Inject appropriate object */);
+        SystemStatusFacade mock = new MockSystemStatusFacade();
+        AvailableProcessorsDecorator.setFacade(mock);
+        FreeJVMMemoryDecorator.setFacade(mock);
+        TotalJVMMemoryDecorator.setFacade(mock);
+        JreVersionDecorator.setFacade(mock);
+        TempLocationDecorator.setFacade(mock);
     }
 
 
@@ -153,7 +158,8 @@ public class StatusControllerDetailedTest {
         this.mockMvc.perform(get("/server/status/detailed?name=Yankel"))
                 .andDo(print()).andExpect(status().isBadRequest())
                 .andExpect(status().reason(Matchers.is(
-                        "Required request parameter 'details' for method parameter type List is not present")));
+                        "Required parameter 'details' is not present.")));
+        ;
 
     }
 
