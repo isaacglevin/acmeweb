@@ -153,7 +153,8 @@ public class StatusControllerDetailedTest {
         this.mockMvc.perform(get("/server/status/detailed?name=Yankel"))
                 .andDo(print()).andExpect(status().isBadRequest())
                 .andExpect(status().reason(Matchers.is(
-                        "Required request parameter 'details' for method parameter type List is not present")));
+                        "Required parameter 'details' is not present.")));
+        ;
 
     }
 
