@@ -9,7 +9,7 @@ public class FreeJVMMemoryDecorator implements StatusResponse {
 
     @Override
     public String getStatusDesc() {
-        return wrapped.getStatusDesc() + ", and there are 127268272 bytes of JVM memory free";
+        return wrapped.getStatusDesc() + ", and there are " + Runtime.getRuntime().freeMemory() + " bytes of JVM memory free";
     }
 
     @Override

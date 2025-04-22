@@ -9,7 +9,7 @@ public class TempLocationDecorator implements StatusResponse {
 
     @Override
     public String getStatusDesc() {
-        return wrapped.getStatusDesc() + ", and the server's temp file location is M:\\\\AppData\\\\Local\\\\Temp";
+        return wrapped.getStatusDesc() + ", and the server's temp file location is " + System.getenv("TEMP");
     }
 
     @Override

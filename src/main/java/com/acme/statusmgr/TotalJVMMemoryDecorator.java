@@ -10,7 +10,7 @@ public class TotalJVMMemoryDecorator implements StatusResponse {
 
     @Override
     public String getStatusDesc() {
-        return wrapped.getStatusDesc() + ", and there is a total of 159383552 bytes of JVM memory";
+        return wrapped.getStatusDesc() + ", and there is a total of " + Runtime.getRuntime().totalMemory() + " bytes of JVM memory";
     }
 
     @Override

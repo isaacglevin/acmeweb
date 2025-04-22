@@ -9,7 +9,7 @@ public class JreVersionDecorator implements StatusResponse {
 
     @Override
     public String getStatusDesc() {
-        return wrapped.getStatusDesc() + ", and the JRE version is 15.0.2+7-27";
+        return wrapped.getStatusDesc() + ", and the JRE version is " + System.getProperty("java.version");
     }
 
     @Override

@@ -10,7 +10,7 @@ public class AvailableProcessorsDecorator implements StatusResponse {
 
     @Override
     public String getStatusDesc() {
-        return wrapped.getStatusDesc() + ", and there are 4 processors available";
+        return wrapped.getStatusDesc() + ", and there are " + Runtime.getRuntime().availableProcessors() + " processors available";
     }
 
     @Override
